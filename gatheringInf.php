@@ -138,11 +138,8 @@ class GatheringInf
 
     public function jsonEncodeAndClearData($resultArrRow)
     {
-        $resultArrRow = json_encode($resultArrRow, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT); // JSON_UNESCAPED_SLASHES,
-        // $resultArrRow = json_encode($resultArrRow, JSON_PRETTY_PRINT);// JSON_UNESCAPED_SLASHES,
-
+        $resultArrRow = json_encode($resultArrRow, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
         $resultArrRow = str_replace(array('\n', '\u25cf'), '', $resultArrRow);
-
 
         return $resultArrRow;
     }
