@@ -122,13 +122,15 @@ class GatheringInf
                     $arrStatus[$i] = $cols->item($j)->nodeValue;
                 }
             }
-            $arrResult[$arrIdPage[$i]] = [
-                'number' => $arrNumber[$i],
-                'logo_url' => $arrLogoUrl[$i],
-                'name' => $arrName[$i],
-                'classes' => $arrClasses[$i],
-                'status1' => $arrStatus[$i],
-                'details_page_url' => $arrDetailsPage[$i],
+            $arrResult[] = [
+                $arrIdPage[$i]=>[
+                    'number' => $arrNumber[$i],
+                    'logo_url' => $arrLogoUrl[$i],
+                    'name' => $arrName[$i],
+                    'classes' => $arrClasses[$i],
+                    'status1' => $arrStatus[$i],
+                    'details_page_url' => $arrDetailsPage[$i],
+                ]
             ];
         }
         return $arrResult;
@@ -136,8 +138,12 @@ class GatheringInf
 
     public function jsonEncodeAndClearData($resultArrRow)
     {
-        $resultArrRow = json_encode($resultArrRow, JSON_UNESCAPED_SLASHES);
+        $resultArrRow = json_encode($resultArrRow, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT); // JSON_UNESCAPED_SLASHES,
+        // $resultArrRow = json_encode($resultArrRow, JSON_PRETTY_PRINT);// JSON_UNESCAPED_SLASHES,
+
         $resultArrRow = str_replace(array('\n', '\u25cf'), '', $resultArrRow);
+
+
         return $resultArrRow;
     }
 }

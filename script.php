@@ -25,6 +25,7 @@ if (isset($argv[1])) {
 
 
     $resultArrRow = $objGathering->getResultArrRow($dom, $countResultPage, $uriPage, $objRequest, $objGathering);
+    // var_dump($resultArrRow);
     print($resultArrRow);
 
 } elseif (!isset($argv[1])) {
